@@ -57,8 +57,26 @@ while (!exit)
             }
             Console.ReadLine() ;
             break;
+        case "3":
+            CreateStudent newstudent = CreateNewStudent();
+
+            Student? studentcreate = repo.AddStudent(newstudent);
+
+            if(studentcreate is not null)
+            {
+                Console.WriteLine($"nouveau etudiant : id : {studentcreate.student_id} - prenom : {studentcreate.first_name}");
+            }
+            Console.ReadLine();
+            break;
     }
 
+}
+
+CreateStudent CreateNewStudent()
+{
+    CreateStudent newStudent = new();
+
+    return newStudent;
 }
 /*
 IEnumerable<Student> students = repo.GetStudent();
