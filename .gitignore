@@ -1,4 +1,13 @@
-C#todbsql/
+# Fichiers de configuration de Visual Studio
 .vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Dossiers de compilation (Fichiers générés automatiquement)
 bin/
 obj/
+
+# Fichiers log et temporaires
+*.log
