@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../Dal_Dapper/Dal_Dapper.csproj" Id="4031291d-7931-4fec-99f3-725b0479ba87" />
+  <Project Path="../Models/Models.csproj" Id="d87bd9cc-9fd3-4b13-8c62-4943a75e6e9a" />
+  <Project Path="Intro_Dapper.csproj" />
+</Solution>
