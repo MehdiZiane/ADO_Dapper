@@ -8,7 +8,7 @@ namespace Exo_Dapper.Models
     {
         public int category_id {  get; set; }
         public string category_titre {  get; set; }
-        public string category_desciption { get; set; }
+        public string category_description { get; set; }
         public DateTime category_createat {  get; set; }
     }
 }

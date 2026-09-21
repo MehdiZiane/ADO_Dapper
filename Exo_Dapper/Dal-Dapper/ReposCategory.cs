@@ -8,7 +8,7 @@ namespace Exo_Dapper.Dal_Dapper
     {
         string connectionString = @"Server=GOS-VDI410\TFTIC;Database=CatalogueDB;Trusted_connection=True;TrustServerCertificate=True";
 
-        public IEnumerable<Category> ShowCategory()
+        public IEnumerable<Category> GetCategory()
         {
             using SqlConnection conn = new SqlConnection(connectionString);
 
