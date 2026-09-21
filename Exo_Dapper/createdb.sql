@@ -18,3 +18,15 @@ constraint fk_product_category foreign key (category_id)
 	references category(category_id)
 );
 
+-- 1. ÉTAPE OBLIGATOIRE : Insérer les catégories d'abord
+INSERT INTO category (category_titre, category_description)
+VALUES 
+(N'Écrans', N'Moniteurs PC pour la bureautique et le gaming'),
+(N'Audio', N'Casques, écouteurs et haut-parleurs sans fil');
+
+-- 2. ÉTAPE SUIVANTE : Insérer les produits liés
+-- (On lie l'écran à la catégorie 1 et le casque à la catégorie 2)
+INSERT INTO product (product_titre, product_description, product_stock, category_id)
+VALUES 
+(N'Écran Gaming 24"', N'Dalle IPS 144Hz 1ms avec ports HDMI', 15, 1),
+(N'Casque Réduction de Bruit', N'Casque Bluetooth avec micro intégré', 42, 2);
