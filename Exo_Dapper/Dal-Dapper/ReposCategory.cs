@@ -14,5 +14,12 @@ namespace Exo_Dapper.Dal_Dapper
 
             return conn.Query<Category>("select * from category");
         }
+
+        public Category? GetById(int id)
+        {
+            using SqlConnection conn = new SqlConnection(connectionString);
+
+            return conn.QueryFirstOrDefault<Category>($"select* from category where category_id = @Id", new { Id = id });
+        }
     }
 }

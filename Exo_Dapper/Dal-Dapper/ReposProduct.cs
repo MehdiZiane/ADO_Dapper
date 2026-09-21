@@ -14,5 +14,12 @@ namespace Exo_Dapper.Dal_Dapper
 
             return conn.Query<Product>("select * from product");
         }
+
+        public Product? GetById(int id)
+        {
+            using SqlConnection conn = new SqlConnection(connectionString);
+
+            return conn.QueryFirstOrDefault<Product>($"select * from product where product_id = @Id", new { Id = id });
+        }
     }
 }

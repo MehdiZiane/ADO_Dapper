@@ -29,8 +29,8 @@ public DateTime CreatedAt { get; set; }
 
 - Implémentation d'un "Repository" Product
 	- Product
-		- Ajout d'un produit
-		- Affichage des produits
+		- Ajout d'un produit 
+		- Affichage des produits V
 		- Affichage d'un produit
 		- Modifier un produit
 		- Suprimer un produit
@@ -38,7 +38,7 @@ public DateTime CreatedAt { get; set; }
 - Implémentation d'un "Repository" Category
 	- Category
 		- Ajout d'une Categorie
-		- Affichage des Categorie
+		- Affichage des Categorie V
 		- Affichage d'une Categorie
 		- Modifier une Categorie
 		- Suprimer une Categorie
