@@ -70,6 +70,20 @@ while (!exit)
             }
             Console.ReadLine();
             break;
+        case "6":
+            CreateCategory newcategory = getNewCategory();
+            Category? categorycreate = reposcategory.AddCategory(newcategory);
+
+            if(categorycreate is not null)
+            {
+                Console.WriteLine($"nouvelle category: id : {categorycreate.category_id} - nom : {categorycreate.category_titre}");
+            }
+            else
+            {
+                Console.WriteLine("errreur lors de l ajout");
+            }
+            Console.ReadLine ();
+            break;
     }
 }
 
@@ -82,6 +96,7 @@ void showmenu()
     Console.WriteLine("entré 3 pour voir le detail d un produit");
     Console.WriteLine("entré 4 pour voir la detail d une category");
     Console.WriteLine("entré 5 pour ajouté un produit");
+    Console.WriteLine("entré 6 pour ajouté une category");
 
 }
 void ShowProduct() 
@@ -132,4 +147,16 @@ CreateProduct GetNewProduct()
     CreateProduct newproduct = new(name, description, stock, categoryid);
 
     return newproduct;
+}
+
+CreateCategory getNewCategory()
+{
+    Console.WriteLine("entre le nom de la category: ");
+    string name = Console.ReadLine();
+    Console.WriteLine("entre la description de la category: ");
+    string description = Console.ReadLine();
+
+    CreateCategory newcategory = new(name, description);
+
+    return newcategory;
 }
