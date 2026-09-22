@@ -113,6 +113,26 @@ while (!exit)
             }
             Console.ReadLine () ;
             break;
+        case "9":
+
+            break;
+        case "10":
+            ShowCategory();
+
+            int idfordelete = GetInt("id de la tache a supprimé");
+
+            bool result = reposcategory.DeleteCategory(idfordelete);
+
+            if (result)
+            {
+                Console.WriteLine($"la categorie avec l id : {idfordelete} a bien été supprimé");
+            }
+            else
+            {
+                Console.WriteLine("une erreur lors de la suppression");
+            }
+            Console.ReadLine();
+            break;
     }
 }
 
@@ -128,6 +148,8 @@ void showmenu()
     Console.WriteLine("entré 6 pour ajouté une category");
     Console.WriteLine("entré 7 pour modifié un produit");
     Console.WriteLine("entré 8 pour modifié une categorie");
+    Console.WriteLine("entré 9 pour supprimé un produit");
+    Console.WriteLine("entré 10 pour supprimé une categorie");
 
 }
 void ShowProduct() 
