@@ -31,7 +31,7 @@ public DateTime CreatedAt { get; set; }
 	- Product
 		- Ajout d'un produit 
 		- Affichage des produits V
-		- Affichage d'un produit
+		- Affichage d'un produit V
 		- Modifier un produit
 		- Suprimer un produit
 
@@ -39,7 +39,7 @@ public DateTime CreatedAt { get; set; }
 	- Category
 		- Ajout d'une Categorie
 		- Affichage des Categorie V
-		- Affichage d'une Categorie
+		- Affichage d'une Categorie V
 		- Modifier une Categorie
 		- Suprimer une Categorie
 

@@ -21,5 +21,16 @@ namespace Exo_Dapper.Dal_Dapper
 
             return conn.QueryFirstOrDefault<Product>($"select * from product where product_id = @Id", new { Id = id });
         }
+
+        public Product? AddProduct(CreateProduct newproduct)
+        {
+            using SqlConnection conn = new SqlConnection(connectionString);
+
+            int result = conn.ExecuteScalar<int>("insert into product(product_titre, product_description, product_stock, category_id) output inserted.product_id values (@product_titre, @product_description, @product_stock, @category_id)", newproduct);
+
+            Product? productcreate = GetById(result);
+
+            return productcreate;
+        }
     }
 }

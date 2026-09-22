@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Exo_Dapper.Models
 {
-    internal class CreateProduct
+    public class CreateProduct
     {
         public CreateProduct(string titre, string description, int stock, int categoryId)
         {

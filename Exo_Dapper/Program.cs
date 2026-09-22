@@ -56,6 +56,20 @@ while (!exit)
             }
             Console.ReadLine() ;
             break;
+        case "5":
+            CreateProduct newproduct = GetNewProduct();
+            Product? productcreate = reposproduct.AddProduct(newproduct);
+
+            if(productcreate is not null)
+            {
+                Console.WriteLine($"nouveaux produit: id : {productcreate.product_id} - nom : {productcreate.product_titre} ");
+            }
+            else
+            {
+                Console.WriteLine("erreur lors de l ajout");
+            }
+            Console.ReadLine();
+            break;
     }
 }
 
@@ -67,6 +81,7 @@ void showmenu()
     Console.WriteLine("entré 2 pour voir les differente category");
     Console.WriteLine("entré 3 pour voir le detail d un produit");
     Console.WriteLine("entré 4 pour voir la detail d une category");
+    Console.WriteLine("entré 5 pour ajouté un produit");
 
 }
 void ShowProduct() 
@@ -98,4 +113,23 @@ int GetInt(string message)
     }
     while (!int.TryParse(Console.ReadLine(), out result));
     return result;
+}
+
+CreateProduct GetNewProduct()
+{
+    Console.WriteLine("entre le nom du produit: ");
+    string name = Console.ReadLine();
+
+    Console.WriteLine("entre la description du produit: ");
+    string description = Console.ReadLine();
+
+    Console.WriteLine("entré le stock du produit: ");
+    int stock = GetInt(Console.ReadLine());
+
+    Console.WriteLine("entre le numero de la category associé au produit: ");
+    int categoryid = GetInt(Console.ReadLine());
+
+    CreateProduct newproduct = new(name, description, stock, categoryid);
+
+    return newproduct;
 }

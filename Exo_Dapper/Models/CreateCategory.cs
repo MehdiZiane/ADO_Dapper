@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Exo_Dapper.Models
 {
-    internal class CreateCategory
+    public class CreateCategory
     {
         public CreateCategory(string titre, string description)
         {
