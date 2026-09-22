@@ -85,19 +85,42 @@ while (!exit)
             Console.ReadLine ();
             break;
         case "7":
+            ShowProduct();
+            int idupdatepro = GetInt("id du produit a modifié");
 
+            Product? producttoUpdate = reposproduct.GetById(idupdatepro);
+
+            if(producttoUpdate is not null)
+            {
+                UpdateProduct updateProduct = GetUpdateProduct(producttoUpdate);
+                Product? productupdate = reposproduct.Updateproduct(updateProduct, idupdatepro);
+
+                if(updateProduct is not null)
+                {
+                    Console.WriteLine($"le produit : {producttoUpdate.category_id} a été mis a jour : nom : {producttoUpdate.product_titre}");
+                }
+                else
+                {
+                    Console.WriteLine("erreur lors de la modification");
+                }
+            }
+            else
+            {
+                Console.WriteLine("aucun produit ne correspond a cette id");
+            }
+            Console.ReadLine () ;
             break;
         case "8":
             ShowCategory();
-            int idupdate = GetInt("id de la tache a modifié");
+            int idupdatecat = GetInt("id de la tache a modifié");
 
-            Category? categorytoUpdate = reposcategory.GetById(idupdate);
+            Category? categorytoUpdate = reposcategory.GetById(idupdatecat);
 
             if( categorytoUpdate is not null)
             {
                 UpdateCategory updateCategory = GetUpdateCategory(categorytoUpdate);
 
-                Category? categoryupdate = reposcategory.UpdateCategory(updateCategory, idupdate);
+                Category? categoryupdate = reposcategory.UpdateCategory(updateCategory, idupdatecat);
                 if (updateCategory is not null)
                 {
                     Console.WriteLine($"la category : {categorytoUpdate.category_id} a été mis a jour : nom : {categorytoUpdate.category_titre}");
@@ -114,7 +137,20 @@ while (!exit)
             Console.ReadLine () ;
             break;
         case "9":
+            ShowProduct();
 
+            int idfordeletepro = GetInt("id du produit a supprimé");
+
+            bool resultpro = reposproduct.DeleteProduit(idfordeletepro);
+            if (resultpro)
+            {
+                Console.WriteLine($"le produit avec l id : {idfordeletepro} a été supprimé");
+            }
+            else
+            {
+                Console.WriteLine("erreur lors de la suppression");
+            }
+            Console.ReadLine ();
             break;
         case "10":
             ShowCategory();
@@ -212,6 +248,24 @@ CreateCategory getNewCategory()
     CreateCategory newcategory = new(name, description);
 
     return newcategory;
+}
+
+UpdateProduct GetUpdateProduct(Product producttoUpdate)
+{
+    Console.WriteLine($"nom du produit : {producttoUpdate.product_titre}");
+    string titleforupdate =  Console.ReadLine();
+
+    Console.WriteLine($"description du produit : {producttoUpdate.product_description}");
+    string descriptionforupdate = Console.ReadLine();
+
+    Console.WriteLine($"stock present du produit : {producttoUpdate.product_stock}");
+    int stock = GetInt(Console.ReadLine());
+
+    Console.WriteLine($"id de la category associé : {producttoUpdate.category_id}");
+    int categoryid = GetInt(Console.ReadLine());
+
+    UpdateProduct updateProduct = new(titleforupdate, descriptionforupdate, stock, categoryid);
+    return updateProduct;
 }
 
 UpdateCategory GetUpdateCategory(Category categorytoUpdate)

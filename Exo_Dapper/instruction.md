@@ -32,8 +32,8 @@ public DateTime CreatedAt { get; set; }
 		- Ajout d'un produit V
 		- Affichage des produits V
 		- Affichage d'un produit V
-		- Modifier un produit
-		- Suprimer un produit
+		- Modifier un produit V
+		- Suprimer un produit V
 
 - Implémentation d'un "Repository" Category
 	- Category
