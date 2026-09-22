@@ -40,7 +40,7 @@ public DateTime CreatedAt { get; set; }
 		- Ajout d'une Categorie V
 		- Affichage des Categorie V
 		- Affichage d'une Categorie V
-		- Modifier une Categorie
+		- Modifier une Categorie V
 		- Suprimer une Categorie
 
 - Implémentation d'une interface dans la console 

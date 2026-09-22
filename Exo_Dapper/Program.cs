@@ -84,6 +84,35 @@ while (!exit)
             }
             Console.ReadLine ();
             break;
+        case "7":
+
+            break;
+        case "8":
+            ShowCategory();
+            int idupdate = GetInt("id de la tache a modifié");
+
+            Category? categorytoUpdate = reposcategory.GetById(idupdate);
+
+            if( categorytoUpdate is not null)
+            {
+                UpdateCategory updateCategory = GetUpdateCategory(categorytoUpdate);
+
+                Category? categoryupdate = reposcategory.UpdateCategory(updateCategory, idupdate);
+                if (updateCategory is not null)
+                {
+                    Console.WriteLine($"la category : {categorytoUpdate.category_id} a été mis a jour : nom : {categorytoUpdate.category_titre}");
+                }
+                else
+                {
+                    Console.WriteLine("erreur lors de la modification");
+                }
+            }
+            else
+            {
+                Console.WriteLine("aucune category ne correspond a cette id");
+            }
+            Console.ReadLine () ;
+            break;
     }
 }
 
@@ -97,6 +126,8 @@ void showmenu()
     Console.WriteLine("entré 4 pour voir la detail d une category");
     Console.WriteLine("entré 5 pour ajouté un produit");
     Console.WriteLine("entré 6 pour ajouté une category");
+    Console.WriteLine("entré 7 pour modifié un produit");
+    Console.WriteLine("entré 8 pour modifié une categorie");
 
 }
 void ShowProduct() 
@@ -159,4 +190,16 @@ CreateCategory getNewCategory()
     CreateCategory newcategory = new(name, description);
 
     return newcategory;
+}
+
+UpdateCategory GetUpdateCategory(Category categorytoUpdate)
+{
+    Console.WriteLine($" nom de la category : {categorytoUpdate.category_titre}");
+    string titleforupdate = Console.ReadLine();
+
+    Console.WriteLine($" description de la category : {categorytoUpdate.category_description}");
+    string descriptionforupdate = Console.ReadLine();
+
+    UpdateCategory updateCategory = new(titleforupdate, descriptionforupdate);
+    return updateCategory;
 }

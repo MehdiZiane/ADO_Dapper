@@ -32,5 +32,20 @@ namespace Exo_Dapper.Dal_Dapper
 
             return categorycreate;
         }
+        public Category? UpdateCategory(UpdateCategory updatecategory, int id)
+        {
+            using SqlConnection conn = new SqlConnection(connectionString);
+
+            int rows = conn.Execute("update category set category_titre = @category_titre, category_description = @category_description where category_id = @Id",
+                 new {category_titre = updatecategory.category_titre, category_description = updatecategory.category_description, id = id});
+            if(rows != 0)
+            {
+                return GetById(id);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
